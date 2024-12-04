@@ -1,0 +1,26 @@
+namespace flatbuffers.ledger;
+
+rpc_service TransactionService {
+  ProcessTransaction(TransactionRequest):TransactionResponse(streaming: "none");
+}
+
+table TransactionRequest {
+  transaction_id: long;
+  debit_account: long;
+  credit_account: long;
+  amount: long;
+  currency: long;
+}
+
+table TransactionResponse {
+  transaction_id: long;
+  debit_account: long;
+  credit_account: long;
+  amount: long;
+  currency: long;
+  success: bool;
+  timestamp: long;
+}
+
+root_type TransactionRequest;
+root_type TransactionResponse;
